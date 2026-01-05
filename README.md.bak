@@ -1,0 +1,126 @@
+# Customer Registration Service
+
+A Spring Boot 3 microservice for managing customer information with full
+CRUD functionality, partial updates (PATCH), correlation ID logging, and
+H2 in-memory database support.
+
+This service demonstrates **clean architecture**, **enterprise
+logging**, and **REST best practices**.
+
+## 🚀 Features
+
+-   Create, read, update, partially update, and delete customers
+-   H2 in-memory database
+-   Global exception handling
+-   Lombok for cleaner code
+-   Centralized logging with Logback
+-   Automatic Correlation ID filter (`X-Correlation-Id`)
+-   Postman collection included
+-   PUT (full update) + PATCH (partial update)
+
+## 🛠 Tech Stack
+
+-   Spring Boot 3
+-   Spring Web
+-   Spring Data JPA
+-   H2 Database
+-   Lombok
+-   Logback
+-   MDC for Correlation IDs
+
+## 📦 Project Structure
+
+    src/main/java/com/dj/customer
+     ├── controller
+     ├── service
+     ├── repository
+     ├── entity
+     ├── dto
+     ├── exception
+     ├── filter/CorrelationIdFilter.java
+     └── CustomerRegistrationServiceApplication.java
+
+    src/main/resources
+     ├── application.yml
+     └── logback-spring.xml
+
+    postman/
+     └── customer-registration.postman_collection.json
+
+## ▶️ Running the Application
+
+### Using Maven:
+
+    mvn spring-boot:run
+
+### Using IDE:
+
+Run:\
+`CustomerRegistrationServiceApplication.java`
+
+## 🗂 H2 Database Console
+
+http://localhost:8080/h2-console
+
+    JDBC URL: jdbc:h2:mem:customerdb
+    User: sa
+    Password: (empty)
+
+## 📡 REST API Endpoints
+
+Base URL:
+
+    http://localhost:8080/api/v1/customers
+
+### 1. List All Customers
+
+GET /api/v1/customers
+
+### 2. Get Customer by ID
+
+GET /api/v1/customers/{id}
+
+### 3. Create Customer
+
+POST /api/v1/customers
+
+### 4. Update Customer (Full Update)
+
+PUT /api/v1/customers/{id}
+
+### 5. Patch Customer (Partial Update)
+
+PATCH /api/v1/customers/{id}
+
+### 6. Delete Customer
+
+DELETE /api/v1/customers/{id}
+
+## 🧪 Postman Collection
+
+Located at:
+
+    postman/customer-registration.postman_collection.json
+
+## 📝 Logging & Correlation ID
+
+Every log automatically includes correlationId via MDC.
+
+Example:
+
+    2025-12-24 00:39:43.861 INFO [792c5e2c-de08-4647-82f5-d15829eb5b7f] CustomerController - Fetching customer id=1
+
+## ⚠️ Error Handling
+
+Handled globally via GlobalExceptionHandler.
+
+## 📌 Roadmap
+
+-   Add Swagger/OpenAPI
+-   Add JSON logging
+-   Add auditing fields
+-   Add soft delete
+
+## 👤 Author
+
+Developer: Dusmanta Jena
